@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart SIP & Wealth Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js CDN for Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📈 Smart SIP & Wealth Tracker</h1>
+            <p>Plan, simulate, and track your mutual fund SIP investments</p>
+        </header>
+
+        <!-- Main Calculator & Chart Section -->
+        <div class="dashboard-grid">
+            <!-- Left: Input Controls -->
+            <div class="card input-section">
+                <h2>SIP Calculator</h2>
+                
+                <div class="input-group">
+                    <label for="fundName">Fund / Goal Name</label>
+                    <input type="text" id="fundName" placeholder="e.g., Nifty 50 Index Fund" value="Nifty 50 Index Fund">
+                </div>
+
+                <div class="input-group">
+                    <div class="label-row">
+                        <label for="monthlyInvestment">Monthly Investment (₹)</label>
+                        <span id="amountVal" class="badge">₹ 5,000</span>
+                    </div>
+                    <input type="range" id="monthlyInvestment" min="500" max="100000" step="500" value="5000">
+                </div>
+
+                <div class="input-group">
+                    <div class="label-row">
+                        <label for="returnRate">Expected Annual Return (%)</label>
+                        <span id="rateVal" class="badge">12%</span>
+                    </div>
+                    <input type="range" id="returnRate" min="5" max="30" step="0.5" value="12">
+                </div>
+
+                <div class="input-group">
+                    <div class="label-row">
+                        <label for="timePeriod">Time Period (Years)</label>
+                        <span id="yearsVal" class="badge">10 Yrs</span>
+                    </div>
+                    <input type="range" id="timePeriod" min="1" max="35" step="1" value="10">
+                </div>
+
+                <button id="saveSipBtn" class="btn-primary">+ Add to My Portfolio</button>
+            </div>
+
+            <!-- Right: Results & Doughnut Chart -->
+            <div class="card result-section">
+                <h2>Projected Returns</h2>
+                <div class="chart-container">
+                    <canvas id="sipChart"></canvas>
+                </div>
+
+                <div class="summary-boxes">
+                    <div class="summary-item">
+                        <span>Invested Amount</span>
+                        <h3 id="investedDisplay">₹ 6,00,000</h3>
+                    </div>
+                    <div class="summary-item">
+                        <span>Est. Returns</span>
+                        <h3 id="returnsDisplay" class="green-text">₹ 5,61,695</h3>
+                    </div>
+                    <div class="summary-item highlight">
+                        <span>Total Value</span>
+                        <h3 id="totalDisplay">₹ 11,61,695</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Saved Portfolio Section -->
+        <div class="card portfolio-section">
+            <div class="portfolio-header">
+                <h2>💼 My Active SIP Portfolio</h2>
+                <span id="portfolioTotal" class="badge">Total Monthly SIP: ₹ 0</span>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fund Name</th>
+                            <th>Monthly SIP</th>
+                            <th>Return (%)</th>
+                            <th>Duration</th>
+                            <th>Maturity Value</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="portfolioBody">
+                        <!-- Saved SIPs will appear here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
